@@ -1,8 +1,10 @@
+
+// событие отвечающее за получения города 
+
 abstract class WeatherEvent {}
 
-class FetchWeather extends WeatherEvent {
+class FetchCityEvent extends WeatherEvent {
   final String cityName;
 
-  FetchWeather(this.cityName);
+  FetchCityEvent(this.cityName);
 }
-

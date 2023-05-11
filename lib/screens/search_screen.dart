@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_forecast_app/bloc/weather_bloc.dart';
 import 'package:weather_forecast_app/bloc/weather_event.dart';
-import 'package:weather_forecast_app/bloc/weather_state.dart';
 import 'package:weather_forecast_app/screens/weather_screen.dart';
 
+// Первый экран с полем для ввода города
+
 class SearchScreen extends StatelessWidget {
-  final _textController = TextEditingController();
+  final _textController = TextEditingController(); // переменная для управления ввода текста
 
   SearchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    WeatherBloc weatherBloc = BlocProvider.of<WeatherBloc>(context);
+    WeatherBloc weatherBloc = BlocProvider.of<WeatherBloc>(context); // переменная для получения доступа к BloC
     return Scaffold(
       body: Center(
         child: Column(
@@ -30,8 +31,9 @@ class SearchScreen extends StatelessWidget {
             const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
-              child: TextField(
-                controller: _textController,
+              // поле для ввода названия города
+              child: TextField( 
+                controller: _textController, // обрботчик введенного текста
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.search),
                   border: OutlineInputBorder(
@@ -46,7 +48,9 @@ class SearchScreen extends StatelessWidget {
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
-                weatherBloc.add(FetchWeather(_textController.text));
+                // В блок мы добавляем состояние с переданным в TextField названием города
+                weatherBloc.add(FetchCityEvent(_textController.text)); 
+                // с помощью Navigator.push при нажатии кнопки мы переходим на второй экран
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const WeatherScreen(),

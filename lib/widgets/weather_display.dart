@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'date_format.dart';
 
+// Виджет для отображения погоды на втором экране
+
 Widget weatherDisplay(
     var cityName, var icon, var temp, var condition, var wind, var humidity) {
   return Column(
@@ -66,6 +68,8 @@ Widget weatherDisplay(
     ],
   );
 }
+
+// Виджет для отображения списка погоды за 3 дня
 
 Widget weatherListDisplay(var date, var icon, var temp, var wind, var humidity) {
   var formattedDate1 = DateTime.fromMillisecondsSinceEpoch(date! * 1000);
