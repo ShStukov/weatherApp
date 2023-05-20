@@ -6,7 +6,7 @@ import 'package:weather_forecast_app/models/weather.dart';
 
 class WeatherApi {
   Future<Weather> getCity(String cityName) async { // метод получающий прогноз погоды по названию города
-    final url = 'http://api.weatherapi.com/v1/forecast.json?key=069313f893c844b8bb761542230605&q=$cityName&days=4';
+    final url = 'http://api.weatherapi.com/v1/forecast.json?key=youreApiKey&q=$cityName&days=4';
 
     final response = await http.get(Uri.parse(url)); // выполнение запроса с помощью get 
 
